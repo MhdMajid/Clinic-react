@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import img from '../../Assets/species-icons/heart.png';
 import { useNavigate} from "react-router-dom";
 
 function InformationCard({ id, im, title, description,key }) {
-
+// const [d,sd]=useState()
   const nav = useNavigate() 
-  const NavigateTo = () =>{
-    nav("/AllDoctors")
+  const NavigateTo =() =>{
+
+    nav("/AllDoctors/"+id)
   }
  
   return (

@@ -37,6 +37,7 @@ function ListOfSpecialties() {
         { data && data.map((row , i )=>(
            <SpecialtiesCard 
           key= {i}
+          id = {row.id}
           im = {row.image}
           title ={row.Specialty}
           description={row.description}  

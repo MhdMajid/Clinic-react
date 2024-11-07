@@ -28,8 +28,8 @@ function App() {
           <Route path='About' element={ <About />}/>
           <Route path='Login' element={ <Login />}/>
           <Route path='My-Booking' element={ <MyBooking />}/>
-          <Route path='AllDoctors' element={ <AllDoctors />}/>
-          <Route path='DoctorInfo' element={ <DoctorInfo/>}/>
+          <Route path='AllDoctors/:id' element={ <AllDoctors />}/>
+          <Route path='DoctorInfo/' element={ <DoctorInfo/>}/>
           <Route path='AppointmentForm' element={ <AppointmentForm/>}/>
           <Route path='DoctorProfile' element={<DoctorProfile/>}/>
           <Route path='PatientDetail' element={<PatientDetail/>}/>

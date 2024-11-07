@@ -1,7 +1,7 @@
 import './DoctorInfo.css'
 import img1 from'../../Assets/doctor.png'
 import img2 from'../../Assets/calendar.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   MDBCard, MDBCardBody, MDBCardTitle,
   MDBCardText, MDBRow, MDBCol,

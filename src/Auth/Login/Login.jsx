@@ -28,6 +28,7 @@ import Cookies from 'universal-cookie';
       "email" :  email
     })
     .then((data)=>{console.log(data)
+      
       cookies.set("token" , data.data.data.authorization.token)
       cookies.set ("idD" , data.data.data.Doctor.doctor_id)
       navigate('/DoctorProfile');
