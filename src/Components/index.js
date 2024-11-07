@@ -1,0 +1,8 @@
+//  export {default as AppointmentForm} from '../Pages/AppointmentForm/AppointmentForm'
+export {default as BookAppointment} from './BookAppointment/BookAppointment'
+export {default as DoctorCard} from './DoctorCard/DoctorCard'
+export {default as Doctor} from './Doctors/Doctors'
+export {default as SolutionStep} from './SolutionStep/SolutionStep'
+export {default as Hero} from './Hero/Hero'
+export {default as Info} from './Info/Info'
+export {default as Reviews} from './Reviews/Reviews'

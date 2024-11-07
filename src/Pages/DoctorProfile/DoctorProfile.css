@@ -1,0 +1,16 @@
+.hov:hover{
+    cursor: pointer;
+    color: #fefefefe;
+
+}
+.scr-full{
+    height: 90vh;
+}
+.doctor-section{
+   direction: rtl;
+   text-align: right;
+    display: flex;
+    gap: 24px;
+    background: linear-gradient(to right, #ECF2FF, #FBFCFF);
+
+}

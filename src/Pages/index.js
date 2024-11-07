@@ -1,0 +1,13 @@
+export {default as Home} from "./Home/Home";
+export {default as About} from "./About/About";
+export {default as Contact} from "./Contact/Contact";
+export {default as Employes} from "./Employes/Employes";
+export {default as Page404} from "./Page404/Page404";
+export {default as LegalDocs} from "./LegalDocs/LegalDocs";
+export {default as MyBooking} from "./MyBooking/MyBooking";
+export {default as AllDoctors} from "./AllDoctors/AllDoctors";
+export {default as DoctorInfo} from "./DoctorInfo/DoctorInfo";
+export {default as AppointmentForm} from "./AppointmentForm/AppointmentForm";
+export {default as DoctorProfile} from "./DoctorProfile/DoctorProfile";
+export {default as PatientDetail} from "./PatientDetail/PatientDetail";
+export {default as DashBoard} from "./DashBoard/DashBoard";
