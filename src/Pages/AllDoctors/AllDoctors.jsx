@@ -9,8 +9,8 @@ function AllDoctors(){
   const { id } = useParams();
 // navigate to other page 
 const navigate = useNavigate();
-const handleButtonClick = () => {
-  navigate('/Doctorinfo');
+const handleButtonClick = (id) => {
+  navigate('/Doctorinfo/'+id);
 };
 const [data,setdata] = useState()
 useEffect(()=>{FetchDoctors()},[1])
@@ -82,7 +82,7 @@ const FetchDoctors = async () => {
                  <p className='text-muted mb-0'>{row["clinic location"]}</p>
                </div>
              </div>
-             <MDBBtn rounded className='mx-2' color='info' size='lg' onClick={handleButtonClick}>
+             <MDBBtn rounded className='mx-2' color='info' size='lg' onClick={()=>{handleButtonClick(row.id)}}>
              عرض المواعيد
            </MDBBtn></>
              :
@@ -96,7 +96,7 @@ const FetchDoctors = async () => {
                  <p className='text-muted mb-0'>{row["clinic location"]}</p>
                </div>
              </div>
-             <MDBBtn rounded className='mx-2' color='info' size='lg' onClick={handleButtonClick}>
+             <MDBBtn rounded className='mx-2' color='info' size='lg' onClick={()=>{handleButtonClick(row.id)}}>
              عرض المواعيد
            </MDBBtn></> :"" }
          

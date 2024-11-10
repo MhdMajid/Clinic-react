@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./AppointmentForm.css";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { BaseUrl } from "../../Axios";
 
 function AppointmentForm() {
   
+  const {id} = useParams()
+
 // Needed consts
+const [sendData, setsendData]=useState();
   const [patientName, setPatientName] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
   const [patientAge, setPatientAge] = useState("");
@@ -28,10 +33,22 @@ function AppointmentForm() {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-  
+    await axios.post(`${BaseUrl}patient/store/patient/${id}`, {
+      // add data here :
+      "name": patientName,
+      "age": patientAge,
+      "phone": patientNumber,
+      "email": patientEmail,
+      "address": patientAddress,
+      "previous_surgeries": previousSurgeries,
+      "permanent_medications": permanentMedications,
+      "current_disease_symptoms": currentDiseaseSymptoms,
+      "visit_type": visitType,
+    })
+      .then((data)=>{console.log(data)})
+      .catch((err)=>{console.log(err)})
     // Validate form inputs
     const errors = {};
 
@@ -126,6 +143,7 @@ function AppointmentForm() {
   };
 
   return (
+    <>
     <div className="appointment-form-section " dir="rtl">
       
       <div className="form-container">
@@ -163,7 +181,7 @@ function AppointmentForm() {
           <br />
 
           <label>
-            رقم الموبيل
+            رقم الموبايل
             <input
               type="text"
               value={patientNumber}
@@ -268,6 +286,7 @@ function AppointmentForm() {
 
       <ToastContainer autoClose={5000} limit={1} closeButton={false} />
     </div>
+    </>
   );
 }
 

@@ -1,3 +1,11 @@
 .CardDoctoer{
     max-width:30rem ;
 }
+
+.test{
+    color: black;
+}
+.test :hover{
+    color: red;
+    cursor: not-allowed;
+}
