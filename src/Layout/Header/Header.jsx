@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Header.css'
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,7 @@ import {
 
 
 import { toast } from "react-toastify";
+import Cookies from 'universal-cookie';
 
 const Header = () => {
   const [nav, setNav] = useState(false);
@@ -18,7 +19,8 @@ const Header = () => {
   const openNav = () => {
     setNav(!nav);
   };
-
+  const navigate = useNavigate();
+  const cookie = new Cookies()
   const handleChatBtnClick = () => {
     if (!isButtonDisabled) {
       toast.info("Experiencing high traffic, Please wait a moment.", {
@@ -28,6 +30,38 @@ const Header = () => {
       });
     }
   };
+
+  const goto = async ()=>{
+
+    // if(cookie.get("admin") !== undefined ){
+    //   navb("/dashboard")
+    // }
+    // else if(cookie.get("doctor") !== undefined ){
+    //   navb("/DoctorProfile")
+    // }
+    // else{
+    //   navb("/Login")
+    // }
+    
+    if(await cookie.get("token")){
+      if(await cookie.get("doctor") ){
+        
+        navigate('/DoctorProfile');
+        return;
+      }
+      if(await cookie.get("admin")  ){
+         navigate('/dashboard')
+         return;
+      }
+    }else{
+      navigate('/Login');
+    }
+    // navigate('/Login');
+    console.log(cookie.get("admin"))
+    console.log(cookie.get("doctor"))
+    
+    
+  }
 
   return (
     <>
@@ -52,8 +86,16 @@ const Header = () => {
         </li>
         
         <li>
-          <Link to="Login" className="navbar-links">
-            هل أنت طبيب؟
+          <Link onClick={goto} className="navbar-links">
+
+
+          {
+            cookie.get("token") ? 
+                "لوحة التحكم"
+            
+            : "هل انت طبيب "
+          }
+            
           </Link>
         </li>
         <li>

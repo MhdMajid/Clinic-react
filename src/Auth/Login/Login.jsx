@@ -21,22 +21,33 @@ import Cookies from 'universal-cookie';
 
   const [email , setemail] = useState()
   const [pass , setpass] = useState()
+  const [isDoctor , setisDoctor] = useState()
+  const [isAdmin , setisAdmin] = useState()
 
   const handleButtonClick = async () => {
     await axios.post(`${BaseUrl}login` , {
       "password": pass ,
       "email" :  email
     })
-    .then((data)=>{console.log(data)
-      
+    .then((data)=>{console.log(data.data.data.Admin)
+      cookies.set("doctor" ,data.data.data.Doctor)
+      cookies.set("admin" ,data.data.data.Admin)
       cookies.set("token" , data.data.data.authorization.token)
-      cookies.set ("idD" , data.data.data.Doctor.doctor_id)
-      navigate('/DoctorProfile');
+      if(data.data.data.Doctor === undefined){
+        navigate('/dashboard')
+        cookies.remove("doctor")
+      }
+      if(data.data.data.Admin === undefined){
+        navigate('/DoctorProfile');
+      }
+       
        window.location.reload()
+      
        
     })
     .catch((data)=>console.log(data))
-    
+
+ 
     
   };
 
@@ -44,7 +55,13 @@ import Cookies from 'universal-cookie';
     return navigate('/DoctorProfile')
   }
   return (
-    <><div className="login-section" id="login" >
+    <>
+    
+
+
+    
+    
+    <div className="login-section" id="login" >
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
         <h3 className="info-title"><span>تسجيل دخول</span></h3>
         <br/>
